@@ -1,5 +1,7 @@
 <template>
-  <h1>hello</h1>
+  <div class="container mx-auto">
+    <h1>hello</h1>
+  </div>
 </template>
 
 <script>
