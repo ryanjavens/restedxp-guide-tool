@@ -24,3 +24,12 @@ button.btn {
 button.btn:hover {
     background: linear-gradient(-55deg,#be48da,#36bdcf);
 }
+
+a {
+    color: #BE48DA;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d00dfc;
+}
