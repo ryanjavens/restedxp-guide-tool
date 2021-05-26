@@ -1,0 +1,26 @@
+body {
+    background-color: #090C2B;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+    font-family: 'Varela Round', sans-serif;
+}
+
+p {
+    color: #979BBE;
+    font-family: 'Varela', sans-serif;
+}
+
+button.btn {
+    font-family: 'Varela', sans-serif;
+    color: #ffffff;
+    border-radius: 30px;
+    background: linear-gradient(55deg,#be48da,#36bdcf);
+    border-color: transparent;
+    text-transform: none;
+}
+
+button.btn:hover {
+    background: linear-gradient(-55deg,#be48da,#36bdcf);
+}
