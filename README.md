@@ -8,6 +8,13 @@ https://www.restedxp.com/create-your-own-restedxp-guide/
 - VueJS 3
 - Bootstrap 5
 
+## TODO:
+- Finish front-end form to create a new guide
+- Determine serialization format for converting app data into either JSON or LUA
+- Determine if Vue can handle the LUA file creation, otherwise create .NET CORE application to handle
+- Create import existing guide functionality
+- Share with addon devs :)
+
 ## Project setup
 ```
 npm install
