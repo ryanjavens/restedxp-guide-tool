@@ -14,7 +14,19 @@
     </div>
   </div>
   <h3>Select classes</h3>
-  <ul v-if="playableClasses.length">
+  <p>Please select which classes to include/exclude for this guide.</p>
+  <ul>
+    <li style="color: #ffffff;">
+      Gray - unselected
+    </li>
+    <li style="color: green;">
+      Green - included
+    </li>
+    <li style="color: red;">
+      Red - excluded
+    </li>
+  </ul>
+  <ul class="class-list" v-if="playableClasses.length">
     <PlayableClass v-for="playableClass in playableClasses" :key="playableClass.id" :playableClass="playableClass" @clickClass="changeStatus" />
   </ul>
 </template>
@@ -65,7 +77,7 @@ export default {
 </script>
 
 <style scoped>
-  ul {
+  ul.class-list {
     list-style-type: none;
     padding-left: 0;
     white-space: nowrap;
