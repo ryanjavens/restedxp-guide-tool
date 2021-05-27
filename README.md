@@ -1,4 +1,9 @@
 # restedxp-guide-tool
+This project is built to support the RestedXP WoW Leveling Guide Addon (https://www.restedxp.com/). A challenge that I encountered with this add-on, is that despite being an open-source solution to creating in-game leveling guides, the syntax for defining a guide is a bit technical (especially for non-technical guide creators). With this tool, I hope to create a more visual way for speedrunners and other guide creators to create and maintain their leveling guides. Once completed, this tool will allow a user to create a new guide or edit an existing one using a GUI, and export their creation out into the appropriate .lua format that is expected by the RestedXP guide. 
+
+## Technologies used
+- VueJS 3
+- Bootstrap 5
 
 ## Project setup
 ```
