@@ -12,7 +12,7 @@ p {
     font-family: 'Varela', sans-serif;
 }
 
-button.btn {
+button.btn, a.btn {
     font-family: 'Varela', sans-serif;
     color: #ffffff;
     border-radius: 30px;
@@ -21,7 +21,7 @@ button.btn {
     text-transform: none;
 }
 
-button.btn:hover {
+button.btn:hover, a.btn:hover {
     background: linear-gradient(-55deg,#be48da,#36bdcf);
 }
 
