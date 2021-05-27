@@ -1,35 +1,49 @@
 body {
-    background-color: #090C2B;
+  background-color: #090C2B;
+  margin-top: 60px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #ffffff;
-    font-family: 'Varela Round', sans-serif;
+  color: #ffffff;
+  font-family: 'Varela Round', sans-serif;
 }
 
 p {
-    color: #979BBE;
-    font-family: 'Varela', sans-serif;
+  color: #979BBE;
+  font-family: 'Varela', sans-serif;
 }
 
 button.btn, a.btn {
-    font-family: 'Varela', sans-serif;
-    color: #ffffff;
-    border-radius: 30px;
-    background: linear-gradient(55deg,#be48da,#36bdcf);
-    border-color: transparent;
-    text-transform: none;
+  font-family: 'Varela', sans-serif;
+  color: #ffffff;
+  border-radius: 30px;
+  background: linear-gradient(55deg,#be48da,#36bdcf);
+  border-color: transparent;
+  text-transform: none;
 }
 
 button.btn:hover, a.btn:hover {
-    background: linear-gradient(-55deg,#be48da,#36bdcf);
+  background: linear-gradient(-55deg,#be48da,#36bdcf);
 }
 
 a {
-    color: #BE48DA;
-    text-decoration: none;
+  color: #BE48DA;
+  text-decoration: none;
 }
 
 a:hover {
-    color: #d00dfc;
+  color: #d00dfc;
+}
+
+input.form-control {
+  background-color: #222653;
+  border: 0px solid transparent;
+  font-family: 'Varela', sans-serif;
+  color: #979BBE;
+}
+
+input.form-control:focus {
+  background-color: #222653;
+  box-shadow: 0px 0px 0px 2px #be48da;
+  color: #979BBE;
 }
