@@ -50,12 +50,12 @@
   }
 
   img.selected {
-    filter: grayscale(0);
+    filter: grayscale(100%) sepia(100%) saturate(500%) brightness(75%) hue-rotate(80deg);
     border: 1px solid green;
   }
 
   img.excluded {
-    filter: grayscale(0);
+    filter: grayscale(100%) sepia(100%) saturate(500%) brightness(75%) hue-rotate(305deg);
     border: 1px solid red;
   }
 </style>
