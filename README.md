@@ -7,6 +7,7 @@ https://www.restedxp.com/create-your-own-restedxp-guide/
 ## Technologies used
 - VueJS 3
 - Bootstrap 5
+- File-saver (https://www.npmjs.com/package/file-saver)
 
 ## TODO:
 - Finish front-end form to create a new guide
