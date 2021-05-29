@@ -84,21 +84,51 @@
         }
       },
       handleSubmit() {
-        if(this.playableClasses.filter(i => i.status === 1 || i.status === 2).length > 0) {
+        // Only grab selected classes
+        var selectedClasses = this.playableClasses.filter(i => i.status === 1 || i.status === 2);
+
+        if(selectedClasses.length > 0) {
           // Clear playableClassValidation if it exists
           if(this.playableClassValidation != '') {
             this.playableClassValidation = '';
           }
+          const REGISTER_GUIDE_LUA_METHOD_NAME = 'RXPGuides.RegisterGuide';
           var FileSaver = require('file-saver');
-          var blob = new Blob(["Hello, world!"], {type: "application/x-lua"});
-          FileSaver.saveAs(blob, "hello world.lua");
-          // TODO: If valid, export a file
+
+          var guideBody = '<< ';
+          // Parse player class data into LUA string
+          selectedClasses.forEach((playableClass, index) => {
+            var includeSlash = true;
+            if(index === selectedClasses.length - 1) {
+              includeSlash = false;
+            }
+            guideBody += this.parseSelectedPlayableClass(playableClass, includeSlash);
+          });
+
+          var blob = new Blob([`${REGISTER_GUIDE_LUA_METHOD_NAME}("${this.guideName}",[[\n${guideBody}\n]])`], 
+          {type: "application/x-lua"});
+          FileSaver.saveAs(blob, `${this.guideName}.lua`);
         }
         else {
           // TODO: Determine if someone would want to have no classes selected where guide applies to all. 
           // Maybe just pop up a warning message in this case?
           this.playableClassValidation = '* Please select the classes that are included/excluded from this guide.'
         }
+      },
+      parseSelectedPlayableClass(playableClass, includeSlash) {
+        var classString = '';
+
+        if(playableClass.status === 2) {
+          classString += '!';
+        }
+
+        classString += playableClass.name;
+
+        if(includeSlash) {
+          classString += '/';
+        }
+
+        return classString;
       }
     }
   }
