@@ -25,7 +25,8 @@
           </li>
         </ul>
         <ul class="class-list" v-if="playableClasses.length">
-          <PlayableClass v-for="playableClass in playableClasses" :key="playableClass.id" :playableClass="playableClass" @clickClass="changeStatus" />
+          <PlayableClass v-for="playableClass in playableClasses" :key="playableClass.id" :playableClass="playableClass" 
+          @clickClass="changeStatus" />
         </ul>
         <div v-if="playableClassValidation">
           <p style="color: red;">{{ playableClassValidation }}</p>
@@ -88,9 +89,14 @@
           if(this.playableClassValidation != '') {
             this.playableClassValidation = '';
           }
+          var FileSaver = require('file-saver');
+          var blob = new Blob(["Hello, world!"], {type: "application/x-lua"});
+          FileSaver.saveAs(blob, "hello world.lua");
           // TODO: If valid, export a file
         }
         else {
+          // TODO: Determine if someone would want to have no classes selected where guide applies to all. 
+          // Maybe just pop up a warning message in this case?
           this.playableClassValidation = '* Please select the classes that are included/excluded from this guide.'
         }
       }
