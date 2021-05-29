@@ -83,14 +83,12 @@
         }
       },
       handleSubmit() {
-        // TODO: Add validation for selected classes
         if(this.playableClasses.filter(i => i.status === 1 || i.status === 2).length > 0) {
           // Clear playableClassValidation if it exists
           if(this.playableClassValidation != '') {
             this.playableClassValidation = '';
           }
           // TODO: If valid, export a file
-          console.log("good");
         }
         else {
           this.playableClassValidation = '* Please select the classes that are included/excluded from this guide.'
