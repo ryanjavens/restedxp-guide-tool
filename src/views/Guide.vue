@@ -27,6 +27,9 @@
         <ul class="class-list" v-if="playableClasses.length">
           <PlayableClass v-for="playableClass in playableClasses" :key="playableClass.id" :playableClass="playableClass" @clickClass="changeStatus" />
         </ul>
+        <div v-if="playableClassValidation">
+          <p style="color: red;">{{ playableClassValidation }}</p>
+        </div>
         </div>
         <div class="text-center">
           <button type="submit" class="btn btn-primary">Create guide</button>
@@ -62,7 +65,8 @@
           createPlayableClass("Shaman", require("../assets/img/classes/border/Ui-charactercreate-classes_shaman.png"), 6),
           createPlayableClass("Warlock", require("../assets/img/classes/border/Ui-charactercreate-classes_warlock.png"), 7),
           createPlayableClass("Warrior", require("../assets/img/classes/border/Ui-charactercreate-classes_warrior.png"), 8)
-        ]
+        ],
+        playableClassValidation: ''
       }
     },
     methods: {
@@ -81,11 +85,15 @@
       handleSubmit() {
         // TODO: Add validation for selected classes
         if(this.playableClasses.filter(i => i.status === 1 || i.status === 2).length > 0) {
+          // Clear playableClassValidation if it exists
+          if(this.playableClassValidation != '') {
+            this.playableClassValidation = '';
+          }
           // TODO: If valid, export a file
           console.log("good");
         }
         else {
-          console.log("bad");
+          this.playableClassValidation = '* Please select the classes that are included/excluded from this guide.'
         }
       }
     }
