@@ -35,7 +35,7 @@
           <h3>Guide steps</h3>
           <div v-if="guideSteps.length">
             <GuideStep v-for="guideStep in guideSteps" :key="guideStep.id" :guideStep="guideStep" @clickDelete="deleteGuideStep"
-            @createGuideStepItem="createGuideStepItem" @updateGuideStepItem="updateGuideStepItem"/>
+            @createGuideStepItem="createGuideStepItem" @updateGuideStepItem="updateGuideStepItem" @deleteGuideStepItem="deleteGuideStepItem"/>
           </div>
           <button @click.prevent="createGuideStep" class="btn btn-primary">+ Add guide step</button>
         </div>
@@ -171,8 +171,12 @@
           }
         }
       },
-      deleteGuideStepItem(guideStep, guideStepItem) {
-        guideStep.items = guideStep.items.filter(item => item !== guideStepItem);
+      deleteGuideStepItem(guideStep, guideStepItemId) {
+        let guideStepIndex = this.guideSteps.findIndex(element => element.id === guideStep.id);
+
+        if(guideStepIndex != -1) {
+          this.guideSteps[guideStepIndex].items = this.guideSteps[guideStepIndex].items.filter(item => item.id !== guideStepItemId);
+        }
       }
     }
   }

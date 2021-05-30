@@ -4,7 +4,8 @@
       Step {{ guideStep.id }}
     </div>
     <ul class="list-group list-group-flush" v-if="guideStep.items.length">
-      <GuideStepItem v-for="item in guideStep.items" :key="item.id" :id="item.id" :text="item.text" @updateGuideStepItem="updateGuideStepItem"/>
+      <GuideStepItem v-for="item in guideStep.items" :key="item.id" :id="item.id" :text="item.text" 
+      @updateGuideStepItem="updateGuideStepItem" @deleteGuideStepItem="deleteGuideStepItem"/>
     </ul>
     <div class="card-footer">
       <button @click.prevent="createGuideItem" class="btn btn-success">Add item</button>
@@ -33,6 +34,9 @@ export default {
     },
     updateGuideStepItem(guideStepItemId, text) {
       this.$emit('updateGuideStepItem', this.guideStep, guideStepItemId, text);
+    },
+    deleteGuideStepItem(guideStepItemId) {
+      this.$emit('deleteGuideStepItem', this.guideStep, guideStepItemId);
     }
   }
 }

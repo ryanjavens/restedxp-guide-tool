@@ -1,6 +1,7 @@
 <template>
   <li class="list-group-item">
     <input v-model="myText" class="form-control" type="text" required>
+    <button @click.prevent="deleteGuideStepItem" class="btn btn-danger float-end">Delete item</button>
   </li>
 </template>
 
@@ -24,6 +25,11 @@ export default {
       set(input) {
         this.$emit('updateGuideStepItem', this.id, input);
       }
+    }
+  },
+  methods: {
+    deleteGuideStepItem() {
+      this.$emit('deleteGuideStepItem', this.id);
     }
   }
 }
