@@ -31,6 +31,13 @@
         <div v-if="playableClassValidation">
           <p style="color: red;">{{ playableClassValidation }}</p>
         </div>
+        <div class="mb-3">
+          <h3>Guide steps</h3>
+          <div v-if="guideSteps.length">
+            <GuideStep v-for="guideStep in guideSteps" :key="guideStep.id" :guideStep="guideStep" />
+          </div>
+          <button @click.prevent="createGuideStep" class="btn btn-primary">+ Add guide step</button>
+        </div>
         </div>
         <div class="text-center">
           <button type="submit" class="btn btn-primary">Create guide</button>
@@ -42,6 +49,7 @@
 
 <script>
   import PlayableClass from '../components/PlayableClass.vue'
+  import GuideStep from '../components/GuideStep.vue'
 
   const createPlayableClass = (name, imageUrl, id) => ({
     name,
@@ -50,9 +58,15 @@
     status: 0
   });
 
+  const createGuideStep = (id) => ({
+    id,
+    playableClasses: [],
+    items: []
+  });
+
   export default {
     name: 'Guide',
-    components: { PlayableClass },
+    components: { PlayableClass, GuideStep },
     data() {
       return {
         guideName: '',
@@ -67,6 +81,7 @@
           createPlayableClass("Warlock", require("../assets/img/classes/border/Ui-charactercreate-classes_warlock.png"), 7),
           createPlayableClass("Warrior", require("../assets/img/classes/border/Ui-charactercreate-classes_warrior.png"), 8)
         ],
+        guideSteps: [],
         playableClassValidation: ''
       }
     },
@@ -129,6 +144,9 @@
         }
 
         return classString;
+      },
+      createGuideStep() {
+        this.guideSteps.push(createGuideStep(this.guideSteps.length));
       }
     }
   }
