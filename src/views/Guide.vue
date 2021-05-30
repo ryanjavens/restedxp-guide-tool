@@ -127,7 +127,21 @@
             guideBody += this.parseSelectedPlayableClass(playableClass, includeSlash);
           });
 
-          var blob = new Blob([`${REGISTER_GUIDE_LUA_METHOD_NAME}("${this.guideName}",[[\n${guideBody}\n]])`], 
+          // Line break
+          guideBody += '\n';
+
+          // TODO: Parse GuideSteps and GuideStepItems into Lua format
+          this.guideSteps.forEach(guideStep => {
+            guideBody += 'step' + '\n' + '\t';
+            guideStep.items.forEach((guideStepItem, index) => {
+              guideBody += guideStepItem.text+ '\n';
+              if(index !== guideStep.items.length - 1) {
+                guideBody += '\t';
+              }
+            });
+          });
+
+          var blob = new Blob([`${REGISTER_GUIDE_LUA_METHOD_NAME}("${this.guideName}",[[\n${guideBody}]])`], 
           {type: "application/x-lua"});
           FileSaver.saveAs(blob, `${this.guideName}.lua`);
         }
