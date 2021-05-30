@@ -8,28 +8,24 @@
 <script>
 export default {
   props: {
-    text: {
+    item: {
       required: true,
-      type: String
-    },
-    id: {
-      required: true,
-      type: Number
+      type: Object
     }
   },
   computed: {
     myText: {
       get() {
-        return this.text;
+        return this.item.text;
       },
       set(input) {
-        this.$emit('updateGuideStepItem', this.id, input);
+        this.$emit('updateGuideStepItem', this.item, input);
       }
     }
   },
   methods: {
     deleteGuideStepItem() {
-      this.$emit('deleteGuideStepItem', this.id);
+      this.$emit('deleteGuideStepItem', this.item);
     }
   }
 }

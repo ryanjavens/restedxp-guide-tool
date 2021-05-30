@@ -34,8 +34,9 @@
         <div class="mb-3">
           <h3>Guide steps</h3>
           <div v-if="guideSteps.length">
-            <GuideStep v-for="guideStep in guideSteps" :key="guideStep.id" :guideStep="guideStep" @clickDelete="deleteGuideStep"
-            @createGuideStepItem="createGuideStepItem" @updateGuideStepItem="updateGuideStepItem" @deleteGuideStepItem="deleteGuideStepItem"/>
+            <GuideStep v-for="(guideStep, index) in guideSteps" :key="guideStep.id" :guideStep="guideStep" :guideStepIndex="index"
+            @clickDelete="deleteGuideStep" @createGuideStepItem="createGuideStepItem" @updateGuideStepItem="updateGuideStepItem" 
+            @deleteGuideStepItem="deleteGuideStepItem"/>
           </div>
           <button @click.prevent="createGuideStep" class="btn btn-primary">+ Add guide step</button>
         </div>
@@ -160,23 +161,11 @@
       createGuideStepItem(guideStep) {
         guideStep.items.push(createGuideStepItem(guideStep.items.length));
       },
-      updateGuideStepItem(guideStep, guideStepItemId, text) {
-        let guideStepIndex = this.guideSteps.findIndex(element => element.id === guideStep.id);
-
-        if(guideStepIndex != -1) {
-          let guideStepItemIndex = this.guideSteps[guideStepIndex].items.findIndex(element => element.id === guideStepItemId);
-
-          if(guideStepItemIndex != -1) {
-            this.guideSteps[guideStepIndex].items[guideStepItemIndex].text = text;
-          }
-        }
+      updateGuideStepItem(guideStepItem, text) {
+        guideStepItem.text = text;
       },
-      deleteGuideStepItem(guideStep, guideStepItemId) {
-        let guideStepIndex = this.guideSteps.findIndex(element => element.id === guideStep.id);
-
-        if(guideStepIndex != -1) {
-          this.guideSteps[guideStepIndex].items = this.guideSteps[guideStepIndex].items.filter(item => item.id !== guideStepItemId);
-        }
+      deleteGuideStepItem(guideStep, guideStepItem) {
+        guideStep.items = guideStep.items.filter(item => item !== guideStepItem);
       }
     }
   }
