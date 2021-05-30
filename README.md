@@ -10,9 +10,11 @@ https://www.restedxp.com/create-your-own-restedxp-guide/
 - File-saver (https://www.npmjs.com/package/file-saver)
 
 ## TODO:
-- Finish front-end form to create a new guide
-- Determine serialization format for converting app data into either JSON or LUA
-- Determine if Vue can handle the LUA file creation, otherwise create .NET CORE application to handle
+- ~~Finish basic front-end form to create a new guide~~
+- ~~Determine serialization format for converting app data into either JSON or LUA~~
+- ~~Determine if Vue can handle the LUA file creation, otherwise create .NET CORE application to handle~~
+- Improve UI for guide creation
+- Create guide step item selector in modal window so guide step items can be abstracted and look better
 - Create import existing guide functionality
 - Share with addon devs :)
 
