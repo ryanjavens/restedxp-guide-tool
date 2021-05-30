@@ -13,16 +13,19 @@ p {
   font-family: 'Varela', sans-serif;
 }
 
-button.btn, a.btn {
+button.btn, a.btn{
   font-family: 'Varela', sans-serif;
-  color: #ffffff;
   border-radius: 30px;
-  background: linear-gradient(55deg,#be48da,#36bdcf);
   border-color: transparent;
   text-transform: none;
 }
 
-button.btn:hover, a.btn:hover {
+button.btn.btn-primary, a.btn.btn-primary {
+  color: #ffffff;
+  background: linear-gradient(55deg,#be48da,#36bdcf);
+}
+
+button.btn.btn-primary:hover, a.btn.btn-primary:hover {
   background: linear-gradient(-55deg,#be48da,#36bdcf);
 }
 
