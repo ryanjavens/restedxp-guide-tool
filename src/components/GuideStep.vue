@@ -3,19 +3,21 @@
     <div class="card-header">
       Step {{ guideStep.id }}
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Item 1</li>
-      <li class="list-group-item">Item 2</li>
-      <li class="list-group-item">Item 3</li>
+    <ul class="list-group list-group-flush" v-if="guideStep.items.length">
+      <GuideStepItem v-for="item in guideStep.items" :key="item.id" :id="item.id" :text="item.text" @updateGuideStepItem="updateGuideStepItem"/>
     </ul>
-    <div class="card-footer text-end">
-      <button @click.prevent="deleteStep" class="btn btn-danger">Delete</button>
+    <div class="card-footer">
+      <button @click.prevent="createGuideItem" class="btn btn-success">Add item</button>
+      <button @click.prevent="deleteStep" class="btn btn-danger float-end">Delete step</button>
     </div>
   </div>
 </template>
 
 <script>
+import GuideStepItem from '../components/GuideStepItem.vue'
+
 export default {
+  components: { GuideStepItem },
   props: {
     guideStep: {
       required: true,
@@ -25,6 +27,12 @@ export default {
   methods: {
     deleteStep() {
       this.$emit('clickDelete', this.guideStep);
+    },
+    createGuideItem() {
+      this.$emit('createGuideStepItem', this.guideStep);
+    },
+    updateGuideStepItem(guideStepItemId, text) {
+      this.$emit('updateGuideStepItem', this.guideStep, guideStepItemId, text);
     }
   }
 }

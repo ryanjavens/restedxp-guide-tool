@@ -34,7 +34,8 @@
         <div class="mb-3">
           <h3>Guide steps</h3>
           <div v-if="guideSteps.length">
-            <GuideStep v-for="guideStep in guideSteps" :key="guideStep.id" :guideStep="guideStep" @clickDelete="deleteGuideStep"/>
+            <GuideStep v-for="guideStep in guideSteps" :key="guideStep.id" :guideStep="guideStep" @clickDelete="deleteGuideStep"
+            @createGuideStepItem="createGuideStepItem" @updateGuideStepItem="updateGuideStepItem"/>
           </div>
           <button @click.prevent="createGuideStep" class="btn btn-primary">+ Add guide step</button>
         </div>
@@ -62,6 +63,11 @@
     id,
     playableClasses: [],
     items: []
+  });
+
+  const createGuideStepItem = (id) => ({
+    id,
+    text: ''
   });
 
   export default {
@@ -150,6 +156,23 @@
       },
       deleteGuideStep(guideStep) {
         this.guideSteps = this.guideSteps.filter(step => step !== guideStep);
+      },
+      createGuideStepItem(guideStep) {
+        guideStep.items.push(createGuideStepItem(guideStep.items.length));
+      },
+      updateGuideStepItem(guideStep, guideStepItemId, text) {
+        let guideStepIndex = this.guideSteps.findIndex(element => element.id === guideStep.id);
+
+        if(guideStepIndex != -1) {
+          let guideStepItemIndex = this.guideSteps[guideStepIndex].items.findIndex(element => element.id === guideStepItemId);
+
+          if(guideStepItemIndex != -1) {
+            this.guideSteps[guideStepIndex].items[guideStepItemIndex].text = text;
+          }
+        }
+      },
+      deleteGuideStepItem(guideStep, guideStepItem) {
+        guideStep.items = guideStep.items.filter(item => item !== guideStepItem);
       }
     }
   }
